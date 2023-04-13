@@ -1,3 +1,5 @@
-const initialState = {
-    tables: [],
+const InitialState = {
+    tables: []
 }
+
+export default InitialState
