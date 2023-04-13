@@ -1,22 +1,23 @@
 import { Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar'
 import { Container } from 'react-bootstrap';
 import NotFound from './components/pages/NotFound'
 import MainPage from './components/pages/MainPage'
 import Tables from './components/pages/Tables'
+import Footer from './components/views/Footer'
+import Header from './components/views/Header'
 
 function App() {
   return (
     <main>
-      <NavBar>
-        <Container>
+      <Container>
+        <Header />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/tables" element={<Tables />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </Container>
-      </NavBar>
+        <Footer />
+      </Container>
     </main>
   );
 }
