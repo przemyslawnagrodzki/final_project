@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 //selectors
+export const getAllTables = ({ tables }) => tables
 
 // actions
 const createActionName = actionName => `app/tables/${actionName}`;
