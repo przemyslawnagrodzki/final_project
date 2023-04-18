@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getTableById } from "../../redux/tablesRedux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { updateTable } from "../../redux/tablesRedux"
+import { updateTableRequest } from "../../redux/tablesRedux"
 
 
 const Tables = () => {
@@ -43,7 +43,7 @@ useEffect(() =>{
 
   const submit = (e) => {
     e.preventDefault();
-    dispatch(updateTable(id, { status, bill, peopleAmount: people, maxPeopleAmount: maxPeople }));
+    dispatch(updateTableRequest(id, { status, bill, peopleAmount: people, maxPeopleAmount: maxPeople }));
     navigate("/");
   };
 

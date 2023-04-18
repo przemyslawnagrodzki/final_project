@@ -1,5 +1,4 @@
-import axios from 'axios'
-
+import { API_URL } from "../config";
 
 //selectors
 export const getAllTables = ({ tables }) => tables
@@ -19,16 +18,27 @@ export const fetchTablesSuccess = tables => ({
   payload: tables,
 });
 
-export const fetchTables = () => dispatch => {
-  axios.get('/api/tables')
-    .then(response => {
-      dispatch(fetchTablesSuccess(response.data.tables));
-    })
-    .catch(error => {
-      console.error(error);
-    });
+// thunks
+export const loadTables = () => {
+  return (dispatch) => {
+    fetch(`${API_URL}/tables`)
+      .then(res => res.json())
+      .then(data => dispatch(updateTables(data)))
+  };
 };
 
+export const updateTableRequest = (tableId, tableData) => {
+  return (dispatch) => {
+    fetch(`${API_URL}/tables/${tableId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(tableData),
+    })
+    .then(() => dispatch(updateTable({ ...tableData, id: tableId })));
+  };
+};
 
 
 const tablesReducer = (statePart = [], action) => {
