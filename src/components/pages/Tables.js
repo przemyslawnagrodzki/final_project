@@ -58,7 +58,7 @@ useEffect(() =>{
           <h1 className="my-2">Table {id}</h1>
           <Form onSubmit={submit}>
             <Form.Group as={Row} className="my-3">
-              <Form.Label column sm={2} lg={1}><strong>Status:</strong></Form.Label>
+              <Form.Label column sm={3} lg={1}><strong>Status:</strong></Form.Label>
               <Col sm={6} lg={3}>
                 <Form.Select value={status} onChange={(e) => setStatus(e.target.value)} className="form-select" aria-label="Default select example">
                   {options.map((value) => (<option value={value} key={value}>{value}</option>))}
